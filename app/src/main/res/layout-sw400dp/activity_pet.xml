@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pet_bg_main"
+    tools:context=".PetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/Back"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/arrow"
+            android:contentDescription="@string/back_button" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            app:srcCompat="@drawable/pet_name_tag" />
+
+        <ImageButton
+            android:id="@+id/Dog"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="34dp"
+            android:layout_marginBottom="47dp"
+            android:background="@drawable/dog"
+            android:contentDescription="@string/dog" />
+
+        <ImageButton
+            android:id="@+id/Cat"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+
+            android:layout_marginTop="364dp"
+            android:layout_marginEnd="69dp"
+            android:background="@drawable/cat"
+            android:contentDescription="@string/cat" />
+
+        <ImageButton
+            android:id="@+id/Bird"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="180dp"
+            android:layout_marginTop="165dp"
+            android:layout_marginEnd="112dp"
+            android:background="@drawable/bird"
+            android:contentDescription="@string/bird" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="250dp"
+            app:srcCompat="@drawable/branch" />
+
+        <ImageButton
+            android:id="@+id/Parrot"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="210dp"
+            android:background="@drawable/parrot"
+            android:contentDescription="@string/parrot" />
+
+        <ImageButton
+            android:id="@+id/Mouse"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="39dp"
+            android:layout_marginTop="371dp"
+            android:background="@drawable/mouse"
+            android:contentDescription="@string/mouse" />
+
+        <ImageButton
+            android:id="@+id/Frog"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="481dp"
+            android:background="@drawable/frog"
+            android:contentDescription="@string/frog" />
+
+        <ImageButton
+            android:id="@+id/Hamster"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="141dp"
+            android:layout_marginBottom="298dp"
+            android:background="@drawable/hamster"
+            android:contentDescription="@string/hamster" />
+
+        <ImageButton
+            android:id="@+id/Squirrel"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="203dp"
+            android:background="@drawable/squirrel"
+            android:contentDescription="@string/squirrel" />
+
+        <ImageButton
+            android:id="@+id/Rabbit"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+
+            android:layout_marginStart="248dp"
+            android:layout_marginBottom="136dp"
+            android:background="@drawable/rabbit"
+            android:contentDescription="@string/rabbit" />
+
+        <ImageButton
+            android:id="@+id/Turtle"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="146dp"
+            android:layout_marginTop="587dp"
+            android:background="@drawable/turtle"
+            android:contentDescription="@string/turtle" />
+
+        <ImageView
+            android:id="@+id/DogText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="45dp"
+            android:layout_marginBottom="17dp"
+            app:srcCompat="@drawable/dog_text" />
+
+        <ImageView
+            android:id="@+id/CatText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginEnd="47dp"
+            android:layout_marginBottom="239dp"
+            app:srcCompat="@drawable/cat_text" />
+
+        <ImageView
+            android:id="@+id/TurtleText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="176dp"
+            android:layout_marginBottom="36dp"
+            app:srcCompat="@drawable/turtle_text" />
+
+        <ImageView
+            android:id="@+id/RabbitText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="246dp"
+            android:layout_marginBottom="112dp"
+            app:srcCompat="@drawable/rabbit_text" />
+
+        <ImageView
+            android:id="@+id/SquirrelText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="177dp"
+            app:srcCompat="@drawable/squirrel_text" />
+
+        <ImageView
+            android:id="@+id/FrogText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="556dp"
+            app:srcCompat="@drawable/frog_text" />
+
+        <ImageView
+            android:id="@+id/MouseText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="344dp"
+            app:srcCompat="@drawable/mouse_text" />
+
+        <ImageView
+            android:id="@+id/HamsterText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginStart="130dp"
+            android:layout_marginBottom="270dp"
+            app:srcCompat="@drawable/hamster_text" />
+
+        <ImageView
+            android:id="@+id/ParrotText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="290dp"
+            app:srcCompat="@drawable/parrot_text" />
+
+        <ImageView
+            android:id="@+id/BirdText"
+            android:layout_width="100dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="261dp"
+            android:layout_marginEnd="116dp"
+            app:srcCompat="@drawable/bird_text" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,522 @@
+package com.example.aniphonicsapp;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+
+public class MemoryGameActivityLvl1 extends AppCompatActivity {
+
+    private Button back;
+    private MediaPlayer voice, click, correct, win;
+    private Animation scaleUp, scaleDown;
+    private ImageView card1, card2, card3, card4, card5, card6, card7, card8, card9, card10, card11, card12;
+    private final Integer[] cardsArray = {11, 12, 13, 14, 15, 16, 21, 22, 23, 24, 25, 26};
+    private int image11, image12, image13, image14, image15, image16, image21, image22, image23, image24, image25, image26;
+    private int firstCard, secondCard;
+    private int clickedFirst, clickedSecond;
+    private int cardNumber = 1;
+    private AlertDialog alertDialog;
+
+    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_memorize_game_lvl1);
+
+        playAudioVoice();
+
+        scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
+
+        card1 = findViewById(R.id.card1);
+        card2 = findViewById(R.id.card2);
+        card3 = findViewById(R.id.card3);
+        card4 = findViewById(R.id.card4);
+        card5 = findViewById(R.id.card5);
+        card6 = findViewById(R.id.card6);
+        card7 = findViewById(R.id.card7);
+        card8 = findViewById(R.id.card8);
+        card9 = findViewById(R.id.card9);
+        card10 = findViewById(R.id.card10);
+        card11 = findViewById(R.id.card11);
+        card12 = findViewById(R.id.card12);
+
+        card1.setTag("0");
+        card2.setTag("1");
+        card3.setTag("2");
+        card4.setTag("3");
+        card5.setTag("4");
+        card6.setTag("5");
+        card7.setTag("6");
+        card8.setTag("7");
+        card9.setTag("8");
+        card10.setTag("9");
+        card11.setTag("10");
+        card12.setTag("11");
+
+        frontOfCardsResources();
+
+        Collections.shuffle(Arrays.asList(cardsArray));
+
+        back = findViewById(R.id.Back);
+        back.setOnTouchListener((v, event) -> {
+            if(event.getAction()== MotionEvent.ACTION_DOWN) {
+                back.startAnimation(scaleUp);
+                stopAudioVoice();
+                playAudioClick();
+
+            }else if(event.getAction()== MotionEvent.ACTION_UP){
+                back.startAnimation(scaleDown);
+                Intent intent = new Intent(MemoryGameActivityLvl1.this, GamesActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+            return true;
+        });
+
+        card1.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card1, theCard);
+            playAudioClick();
+        });
+
+        card2.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card2, theCard);
+            playAudioClick();
+        });
+
+        card3.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card3, theCard);
+            playAudioClick();
+        });
+
+        card4.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card4, theCard);
+            playAudioClick();
+        });
+
+        card5.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card5, theCard);
+            playAudioClick();
+        });
+
+        card6.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card6, theCard);
+            playAudioClick();
+        });
+
+        card7.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card7, theCard);
+            playAudioClick();
+        });
+
+        card8.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card8, theCard);
+            playAudioClick();
+        });
+
+        card9.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card9, theCard);
+            playAudioClick();
+        });
+
+        card10.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card10, theCard);
+            playAudioClick();
+        });
+
+        card11.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card11, theCard);
+            playAudioClick();
+        });
+
+        card12.setOnClickListener(v -> {
+            int theCard = Integer.parseInt((String) v.getTag());
+            doStuff(card12, theCard);
+            playAudioClick();
+        });
+
+    }
+
+    private void doStuff(ImageView iv, int card) {
+        if(cardsArray[card] == 11) {
+            iv.setImageResource(image11);
+        } else if(cardsArray[card] == 12) {
+            iv.setImageResource(image12);
+        } else if(cardsArray[card] == 13) {
+            iv.setImageResource(image13);
+        } else if(cardsArray[card] == 14) {
+            iv.setImageResource(image14);
+        } else if(cardsArray[card] == 15) {
+            iv.setImageResource(image15);
+        } else if(cardsArray[card] == 16) {
+            iv.setImageResource(image16);
+        } else if(cardsArray[card] == 21) {
+            iv.setImageResource(image21);
+        } else if(cardsArray[card] == 22) {
+            iv.setImageResource(image22);
+        } else if(cardsArray[card] == 23) {
+            iv.setImageResource(image23);
+        } else if(cardsArray[card] == 24) {
+            iv.setImageResource(image24);
+        } else if(cardsArray[card] == 25) {
+            iv.setImageResource(image25);
+        } else if(cardsArray[card] == 26) {
+            iv.setImageResource(image26);
+        }
+
+        if(cardNumber == 1) {
+            firstCard = cardsArray[card];
+            if (firstCard > 20) {
+                firstCard = firstCard - 10;
+            }
+            cardNumber = 2;
+            clickedFirst = card;
+
+            iv.setEnabled(false);
+        } else if(cardNumber == 2) {
+            secondCard = cardsArray[card];
+            if (secondCard > 20) {
+                secondCard = secondCard - 10;
+            }
+            cardNumber = 1;
+            clickedSecond = card;
+
+            card1.setEnabled(false);
+            card2.setEnabled(false);
+            card3.setEnabled(false);
+            card4.setEnabled(false);
+            card5.setEnabled(false);
+            card6.setEnabled(false);
+            card7.setEnabled(false);
+            card8.setEnabled(false);
+            card9.setEnabled(false);
+            card10.setEnabled(false);
+            card11.setEnabled(false);
+            card12.setEnabled(false);
+
+            Handler handler = new Handler();
+            handler.postDelayed(this::calculate, 500);
+        }
+    }
+
+    private void calculate() {
+        if(firstCard == secondCard) {
+            playAudioCorrect();
+            if (clickedFirst == 0) {
+                card1.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 1) {
+                card2.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 2) {
+                card3.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 3) {
+                card4.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 4) {
+                card5.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 5) {
+                card6.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 6) {
+                card7.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 7) {
+                card8.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 8) {
+                card9.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 9) {
+                card10.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 10) {
+                card11.setVisibility(View.INVISIBLE);
+            } else if (clickedFirst == 11) {
+                card12.setVisibility(View.INVISIBLE);
+            }
+
+            if (clickedSecond == 0) {
+                card1.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 1) {
+                card2.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 2) {
+                card3.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 3) {
+                card4.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 4) {
+                card5.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 5) {
+                card6.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 6) {
+                card7.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 7) {
+                card8.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 8) {
+                card9.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 9) {
+                card10.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 10) {
+                card11.setVisibility(View.INVISIBLE);
+            } else if (clickedSecond  == 11) {
+                card12.setVisibility(View.INVISIBLE);
+            }
+        } else {
+            card1.setImageResource(R.drawable.back_card);
+            card2.setImageResource(R.drawable.back_card);
+            card3.setImageResource(R.drawable.back_card);
+            card4.setImageResource(R.drawable.back_card);
+            card5.setImageResource(R.drawable.back_card);
+            card6.setImageResource(R.drawable.back_card);
+            card7.setImageResource(R.drawable.back_card);
+            card8.setImageResource(R.drawable.back_card);
+            card9.setImageResource(R.drawable.back_card);
+            card10.setImageResource(R.drawable.back_card);
+            card11.setImageResource(R.drawable.back_card);
+            card12.setImageResource(R.drawable.back_card);
+        }
+
+        card1.setEnabled(true);
+        card2.setEnabled(true);
+        card3.setEnabled(true);
+        card4.setEnabled(true);
+        card5.setEnabled(true);
+        card6.setEnabled(true);
+        card7.setEnabled(true);
+        card8.setEnabled(true);
+        card9.setEnabled(true);
+        card10.setEnabled(true);
+        card11.setEnabled(true);
+        card12.setEnabled(true);
+
+        checkEnd();
+    }
+
+    private void checkEnd() {
+        if (card1.getVisibility() == View.INVISIBLE &&
+                card1.getVisibility() == View.INVISIBLE &&
+                card2.getVisibility() == View.INVISIBLE &&
+                card3.getVisibility() == View.INVISIBLE &&
+                card4.getVisibility() == View.INVISIBLE &&
+                card5.getVisibility() == View.INVISIBLE &&
+                card6.getVisibility() == View.INVISIBLE &&
+                card7.getVisibility() == View.INVISIBLE &&
+                card8.getVisibility() == View.INVISIBLE &&
+                card9.getVisibility() == View.INVISIBLE &&
+                card10.getVisibility() == View.INVISIBLE &&
+                card11.getVisibility() == View.INVISIBLE &&
+                card12.getVisibility() == View.INVISIBLE) {
+
+            View alertCustomDialog = LayoutInflater.from(MemoryGameActivityLvl1.this).inflate(R.layout.custom_dialog_nextlvl, null);
+            AlertDialog.Builder builder = new AlertDialog.Builder(MemoryGameActivityLvl1.this);
+            builder.setView(alertCustomDialog);
+
+            Button go_back = alertCustomDialog.findViewById(R.id.back_BT);
+            Button next_game = alertCustomDialog.findViewById(R.id.next_BT);
+
+            alertDialog = builder.create();
+
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
+
+            // show your alert dialog
+            alertDialog.show();
+
+            playAudioWin();
+
+            go_back.setOnClickListener(v -> {
+                playAudioClick();
+                Intent intent = new Intent(MemoryGameActivityLvl1.this, GamesActivity.class);
+                startActivity(intent);
+                finish();
+            });
+
+            next_game.setOnClickListener(v -> {
+                playAudioClick();
+                Intent intent = new Intent(getApplicationContext(), MemoryGameActivityLvl2.class);
+                startActivity(intent);
+                alertDialog.dismiss();
+            });
+        }
+
+    }
+
+
+    private void frontOfCardsResources() {
+        image11 = R.drawable.front_card_cat1;
+        image12 = R.drawable.front_card_dog1;
+        image13 = R.drawable.front_card_cow1;
+        image14 = R.drawable.front_card_goat1;
+        image15 = R.drawable.front_card_duck1;
+        image16 = R.drawable.front_card_lion1;
+        image21 = R.drawable.front_card_cat2;
+        image22 = R.drawable.front_card_dog2;
+        image23 = R.drawable.front_card_cow2;
+        image24 = R.drawable.front_card_goat2;
+        image25 = R.drawable.front_card_duck2;
+        image26 = R.drawable.front_card_lion2;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        Intent intent = new Intent(MemoryGameActivityLvl1.this, GamesActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        stopAudioVoice();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // dismiss your alert dialog if it is showing
+        if (alertDialog != null && alertDialog.isShowing()) {
+            alertDialog.dismiss();
+        }
+    }
+
+
+    @SuppressLint("StaticFieldLeak")
+    private final class PlayAudioTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // Initialize the MediaPlayer and start playing the audio in the background
+            voice = MediaPlayer.create(MemoryGameActivityLvl1.this, R.raw.memory_voice);
+            voice.start();
+            voice.setOnCompletionListener(mediaPlayer -> {
+                // Release the MediaPlayer resources when the audio playback is complete
+                voice.release();
+                voice = null;
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+        }
+
+        public void stopAudio() {
+            if (voice != null) {
+                voice.stop();
+                voice.release();
+                voice = null;
+            }
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private final class PlayAudioClickTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // Initialize the MediaPlayer and start playing the audio in the background
+            click = MediaPlayer.create(MemoryGameActivityLvl1.this, R.raw.click);
+            click.start();
+            click.setOnCompletionListener(mediaPlayer -> {
+                // Release the MediaPlayer resources when the audio playback is complete
+                click.release();
+                click = null;
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private final class PlayAudioCorrectTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // Initialize the MediaPlayer and start playing the audio in the background
+            correct = MediaPlayer.create(MemoryGameActivityLvl1.this, R.raw.correct);
+            correct.start();
+            correct.setOnCompletionListener(mediaPlayer -> {
+                // Release the MediaPlayer resources when the audio playback is complete
+                correct.release();
+                correct = null;
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private final class PlayAudioWinTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // Initialize the MediaPlayer and start playing the audio in the background
+            win = MediaPlayer.create(MemoryGameActivityLvl1.this, R.raw.win_game);
+            win.start();
+            win.setOnCompletionListener(mediaPlayer -> {
+                // Release the MediaPlayer resources when the audio playback is complete
+                win.release();
+                win = null;
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+        }
+    }
+
+    private void playAudioVoice() {
+        // Create and execute a new instance of PlayAudioTask
+        PlayAudioTask task = new PlayAudioTask();
+        task.execute();
+    }
+
+    private void stopAudioVoice() {
+        PlayAudioTask task = new PlayAudioTask();
+        task.stopAudio();
+    }
+
+    private void playAudioClick() {
+        // Create and execute a new instance of PlayAudioTask
+        PlayAudioClickTask task = new PlayAudioClickTask();
+        task.execute();
+    }
+
+    private void playAudioCorrect() {
+        // Create and execute a new instance of PlayAudioTask
+        PlayAudioCorrectTask task = new PlayAudioCorrectTask();
+        task.execute();
+    }
+
+    private void playAudioWin() {
+        // Create and execute a new instance of PlayAudioTask
+        PlayAudioWinTask task = new PlayAudioWinTask();
+        task.execute();
+    }
+}

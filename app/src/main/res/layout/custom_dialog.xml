@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/dialog_bg"/>
+
+    <ImageView
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/great_game_text"/>
+
+    <Button
+        android:id="@+id/Green_BT"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="230dp"
+        android:contentDescription="@string/greenBT"
+        android:background="@drawable/new_game"/>
+
+    <Button
+        android:id="@+id/Red_BT"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginStart="80dp"
+        android:contentDescription="@string/redBT"
+        android:background="@drawable/arrow"/>
+
+</RelativeLayout>
